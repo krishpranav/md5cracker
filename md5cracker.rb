@@ -64,3 +64,9 @@ class Md5Cracker
             end
         end
         
+        def append_to_cache(hash, plaintext, filename = "cache")
+            File.open(filename, "a") do |file|
+                file.write "#{hash}:#{plaintext}\n"
+            end
+        end
+        
