@@ -44,4 +44,13 @@ class Md5Cracker
             end
             nil
         end
+
+        def dictionary_attack(hash, wordlist)
+            wordlist.each do |word|
+                if Digest::MD5.hexdigest(word) == hash.downcase
+                    return word
+                end
+            end
+            nil
+        end
         
