@@ -20,4 +20,11 @@ class Md5Cracker
 
         load_cache
     end
-    
+
+    def crack
+        @hashes.each do |hash|
+            if plaintext = @cache[hash]
+                puts "#{hash}:#{plaintext}"
+                next
+            end
+            
