@@ -27,4 +27,11 @@ class Md5Cracker
                 puts "#{hash}:#{plaintext}"
                 next
             end
-            
+            if plaintext = crack_single_hash(hash)
+                puts "#{hash}:#{plaintext}"
+                append_to_cache(hash, plaintext)
+            end
+            sleep 1
+        end
+
+        private
