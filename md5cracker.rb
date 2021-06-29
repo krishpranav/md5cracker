@@ -53,4 +53,14 @@ class Md5Cracker
             end
             nil
         end
+
+        def load_cache(filename = "cache")
+            if File.file? filename
+                File.new(filename).each_line do |line|
+                    if m = line.chomp.match(/^([a-fA-F0-9]{32}):(.*)$/)
+                        @cache[m[1] = m[2]]
+                    end
+                end
+            end
+        end
         
