@@ -35,3 +35,13 @@ class Md5Cracker
         end
 
         private
+        
+        def crack_single_hash(hash)
+            response = Net::HTTP.get URI("http://www.google.com/search?q=#{hash}")
+            wordlist = response.split(/\s+/)
+            if plaintext = dictionary_attack(hash, wordlist)
+                return plaintext
+            end
+            nil
+        end
+        
