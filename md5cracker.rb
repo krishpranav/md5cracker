@@ -9,3 +9,11 @@ class Md5Cracker
     def initialize(filename)
         @hashes = Array.new
         @cache = Hash.new
+
+        File.new(filename).each_line do |line|
+            if m = line.chomp.match(/\b([a-fA-F0-9]{32})\b/)
+                @hashes << m[1]
+            end
+        end
+        @hashes.uniq!
+        puts "Loaded #{@hashes.count} unique hashes "
