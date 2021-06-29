@@ -16,4 +16,8 @@ class Md5Cracker
             end
         end
         @hashes.uniq!
-        puts "Loaded #{@hashes.count} unique hashes "
+        puts "Loaded #{@hashes.count} unique hashes"
+
+        load_cache
+    end
+    
